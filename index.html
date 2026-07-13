@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First Light — The alarm that ends snoozing</title>
+<meta name="description" content="First Light won't go quiet until you've meditated, moved, journaled or prayed. Trade your snooze for mornings won. Join the No Snooze Crew.">
+<style>
+  :root {
+    --paper: #F8F6F1;
+    --card: #FFFFFF;
+    --coral: #D86A4F;
+    --ink: #1C1E1C;
+    --ink-soft: rgba(0,0,0,.55);
+    --ink-faint: rgba(0,0,0,.34);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 96px 0 64px; text-align: center; }
+  .sun {
+    width: 88px; height: 88px; margin: 0 auto 28px; display: block;
+  }
+  .crew {
+    font-size: 13px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; margin-bottom: 14px;
+  }
+  h1 { font-size: clamp(40px, 8vw, 64px); font-weight: 750; letter-spacing: -.02em; line-height: 1.05; }
+  .tagline { font-size: clamp(18px, 3.5vw, 22px); color: var(--ink-soft); margin-top: 18px; }
+  .cta {
+    display: inline-block; margin-top: 36px; background: var(--coral); color: #fff;
+    padding: 16px 40px; border-radius: 999px; text-decoration: none; font-weight: 650;
+    font-size: 17px; transition: transform .15s ease;
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .cta-note { display: block; margin-top: 12px; font-size: 13px; color: var(--ink-faint); }
+  section { padding: 48px 0; }
+  .stat {
+    text-align: center; font-size: clamp(20px, 4vw, 26px); font-weight: 650;
+    padding: 56px 24px; line-height: 1.4;
+  }
+  .stat em { color: var(--coral); font-style: normal; }
+  .stat small { display: block; margin-top: 10px; font-size: 13px; color: var(--ink-faint); font-weight: 400; }
+  .steps { display: grid; gap: 16px; }
+  .step {
+    background: var(--card); border-radius: 20px; padding: 26px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  }
+  .step b { display: block; font-size: 17px; margin-bottom: 6px; }
+  .step span { color: var(--ink-soft); font-size: 15px; }
+  .step .n { color: var(--coral); font-weight: 750; margin-right: 8px; }
+  .missions { text-align: center; color: var(--ink-soft); font-size: 15px; padding-top: 0; }
+  footer {
+    padding: 56px 0 72px; text-align: center; font-size: 13px; color: var(--ink-faint);
+  }
+  footer a { color: var(--ink-faint); }
+</style>
+<link rel="canonical" href="https://firstlightalarm.com/">
+<meta property="og:title" content="First Light — The alarm that ends snoozing">
+<meta property="og:description" content="First Light won't go quiet until you've meditated, moved, journaled or prayed. Trade your snooze for mornings won. Join the No Snooze Crew.">
+<meta property="og:url" content="https://firstlightalarm.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="First Light">
+</head>
+<body>
+
+<header class="wrap">
+  <svg class="sun" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <clipPath id="h"><rect x="0" y="0" width="100" height="61"/></clipPath>
+    <circle cx="50" cy="61" r="21" fill="#D86A4F" clip-path="url(#h)"/>
+    <line x1="20" y1="61" x2="80" y2="61" stroke="#1C1E1C" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="50" y1="20" x2="50" y2="30" stroke="#D86A4F" stroke-width="3" stroke-linecap="round"/>
+    <line x1="29" y1="29" x2="36" y2="36" stroke="#D86A4F" stroke-width="3" stroke-linecap="round"/>
+    <line x1="71" y1="29" x2="64" y2="36" stroke="#D86A4F" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <div class="crew">Join the No Snooze Crew</div>
+  <h1>First Light</h1>
+  <p class="tagline">The alarm that won't go quiet until you've done<br>one good thing for yourself.</p>
+  <a class="cta" href="#" id="testflight">Join the beta</a>
+  <span class="cta-note">Free on TestFlight · iPhone (iOS 26+)</span>
+</header>
+
+<section class="wrap">
+  <div class="stat">
+    Half of all mornings end with a snooze.<br>
+    Heavy snoozers lose <em>five full days a year</em>.
+    <small>Scientific Reports, 2025 — 3 million nights of sleep data</small>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="steps">
+    <div class="step"><b><span class="n">1</span>Your alarm rings</b>
+      <span>Full-screen, through Silent mode. Hitting "Not yet" only buys you 90 seconds — then it's back, louder.</span></div>
+    <div class="step"><b><span class="n">2</span>Prove you're up</b>
+      <span>Film a quick clip — your journal, your mat, your running shoes. No clip, no quiet.</span></div>
+    <div class="step"><b><span class="n">3</span>Do your morning mission</b>
+      <span>Meditate, move, journal, read or pray. The camera and motion sensors verify it actually happened.</span></div>
+    <div class="step"><b><span class="n">4</span>Morning won</b>
+      <span>Streak grows. Progress logged. See you tomorrow at first light.</span></div>
+  </div>
+</section>
+
+<section class="wrap missions">
+  Push-ups · Squats · Yoga · Morning steps · Handstands<br>
+  Journaling · Reading · Meditation · Prayer · Scripture — or build your own
+</section>
+
+<footer class="wrap">
+  <p><a href="blog/index.html">The Morning Journal</a> · <a href="privacy.html">Privacy</a> — everything stays on your phone. No accounts, no tracking, no data leaves your device.</p>
+  <p style="margin-top:10px">© 2026 First Light</p>
+</footer>
+
+</body>
+</html>
