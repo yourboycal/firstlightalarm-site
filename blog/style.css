@@ -36,3 +36,8 @@ a { color: var(--coral); }
 .refs h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); }
 .refs ol { padding-left: 20px; }
 .refs li { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 8px; }
+.hero-art {
+  background: #fff; border-radius: 20px; padding: 22px 20px 10px; margin: 4px 0 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+}
+.hero-art svg { display: block; width: 100%; height: auto; }
