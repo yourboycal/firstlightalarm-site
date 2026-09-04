@@ -148,6 +148,7 @@
     <a class="link" href="blog/index.html">The Morning Journal</a>
     <a class="link" href="support.html">Support</a>
     <a class="link" href="privacy.html">Privacy</a>
+    <a class="link" href="terms.html">Terms</a>
     <a class="nav-cta" href="#waitlist">Join waitlist</a>
   </div>
 </nav>
@@ -248,7 +249,7 @@
 </section>
 
 <footer class="wrap">
-  <p><a href="blog/index.html">The Morning Journal</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> — everything stays on your phone. No accounts, no tracking, no data leaves your device.</p>
+  <p><a href="blog/index.html">The Morning Journal</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> — everything stays on your phone. No accounts, no tracking, no data leaves your device.</p>
   <p style="margin-top:10px">© 2026 First Light</p>
 </footer>
 
@@ -260,7 +261,7 @@
     if (form.action.indexOf('REPLACE_FORM_ID') !== -1) {
       e.preventDefault();
       var email = form.email.value, phone = form.phone.value;
-      window.location.href = 'mailto:cal@wearesecta.com?subject=' +
+      window.location.href = 'mailto:hello@firstlightalarm.com?subject=' +
         encodeURIComponent('First Light waitlist') + '&body=' +
         encodeURIComponent('Email: ' + email + '\niPhone: ' + phone);
       form.style.display = 'none';
