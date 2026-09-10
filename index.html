@@ -14,8 +14,7 @@
 <meta property="og:image" content="https://firstlightalarm.com/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23F8F6F1'/%3E%3CclipPath id='c'%3E%3Crect x='0' y='0' width='100' height='63'/%3E%3C/clipPath%3E%3Ccircle cx='50' cy='63' r='22' fill='%23C9613D' clip-path='url(%23c)'/%3E%3Cline x1='18' y1='63' x2='82' y2='63' stroke='%231C1B19' stroke-width='5' stroke-linecap='round'/%3E%3Cline x1='50' y1='24' x2='50' y2='34' stroke='%23C9613D' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='30' y1='32' x2='37' y2='39' stroke='%23C9613D' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='70' y1='32' x2='63' y2='39' stroke='%23C9613D' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
-<meta name="theme-color" content="#F8F6F1" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#14171C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F8F6F1">
 <style>
   :root {
     --paper: #F8F6F1;
@@ -27,53 +26,44 @@
     --ink-2: #6B6862;
     --ink-3: #A5A199;
     --hair: rgba(0, 0, 0, .08);
-    --shadow: 0 24px 60px rgba(0, 0, 0, .14);
+    --shadow: 0 30px 60px -20px rgba(28, 27, 25, .35);
     --on-clay: #FFFFFF;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #14171C;
-      --card: #1C2028;
-      --sunk: #232833;
-      --clay: #E38160;
-      --clay-soft: rgba(227, 129, 96, .16);
-      --ink: #F2F0EC;
-      --ink-2: #AEB6C1;
-      --ink-3: #7F8894;
-      --hair: rgba(255, 255, 255, .10);
-      --shadow: 0 24px 60px rgba(0, 0, 0, .5);
-      --on-clay: #14171C;
-    }
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: light; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background: var(--paper); color: var(--ink);
-    -webkit-font-smoothing: antialiased; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; line-height: 1.55; overflow-x: hidden;
   }
-  img { max-width: 100%; display: block; }
+  img { max-width: 100%; height: auto; display: block; }
   a { color: var(--clay); }
   :focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; border-radius: 4px; }
 
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .prose { max-width: 640px; }
+  .centre { text-align: center; margin-inline: auto; }
   h1, h2, h3 { letter-spacing: -.02em; line-height: 1.08; text-wrap: balance; }
-  h2 { font-size: clamp(30px, 4.6vw, 44px); font-weight: 750; }
+  h2 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 750; }
   h3 { font-size: 19px; font-weight: 700; }
   p { color: var(--ink-2); }
-  .lede { font-size: clamp(17px, 2.2vw, 20px); }
+  .lede { font-size: clamp(17px, 2.1vw, 19.5px); }
   .eyebrow {
     font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase;
     color: var(--clay); font-weight: 700; margin-bottom: 14px;
   }
 
+  /* ---- phone mockup: a dark frame around the raw screenshot, corners scale with width ---- */
+  .phone { container-type: inline-size; width: 300px; max-width: 100%; }
+  .phone .frame { padding: 3cqw; background: #1C1B19; border-radius: 16.5cqw; box-shadow: var(--shadow); }
+  .phone img { width: 100%; height: auto; border-radius: 13.5cqw; background: var(--paper); }
+
   /* ---- nav ---- */
   nav {
     position: sticky; top: 0; z-index: 10;
-    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    background: rgba(248, 246, 241, .86);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--hair);
   }
@@ -89,73 +79,94 @@
     border: 0; cursor: pointer; font-family: inherit;
   }
   .pill:hover { transform: translateY(-1px); }
-  .pill.quiet { background: transparent; color: var(--ink); border: 1.5px solid var(--hair); }
+  .pill.quiet { background: transparent; color: var(--ink); border: 1.5px solid rgba(0,0,0,.14); }
   nav .pill { padding: 9px 18px; font-size: 14px; }
   @media (max-width: 720px) { nav a.link { display: none; } }
 
-  /* ---- hero ---- */
-  .hero { padding: 72px 0 24px; }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } .hero .ctas { justify-content: center; } }
-  h1 { font-size: clamp(42px, 7vw, 76px); font-weight: 780; letter-spacing: -.03em; line-height: 1.0; }
+  /* ---- header ---- */
+  .hero { padding: 64px 0 40px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: auto -10% -40% auto; width: 60vw; height: 60vw; max-width: 760px; max-height: 760px;
+    background: radial-gradient(closest-side, rgba(201, 97, 61, .16), transparent 70%); pointer-events: none;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; position: relative; }
+  h1 { font-size: clamp(42px, 6.6vw, 72px); font-weight: 780; letter-spacing: -.03em; line-height: 1.0; }
   h1 em { font-style: normal; color: var(--clay); }
-  .hero .lede { margin-top: 20px; max-width: 520px; }
-  @media (max-width: 860px) { .hero .lede { margin-inline: auto; } }
+  .hero .lede { margin-top: 22px; max-width: 500px; }
   .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
   .terms-line { margin-top: 18px; font-size: 13.5px; color: var(--ink-3); }
-  .phone {
-    border-radius: 44px; overflow: hidden; box-shadow: var(--shadow);
-    border: 1px solid var(--hair); background: var(--card);
+  .hero-art { position: relative; width: min(440px, 100%); margin-left: auto; padding: 0 0 36px 44px; }
+  .hero-art .photo { border-radius: 30px; overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 20px 50px -20px rgba(28,27,25,.3); }
+  .hero-art .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-art .phone { position: absolute; left: 0; bottom: 0; width: 44%; }
+  @media (max-width: 860px) {
+    .hero { padding-top: 44px; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hero .lede { margin-inline: auto; }
+    .hero .ctas { justify-content: center; }
+    .hero-art { margin-inline: auto; width: min(400px, 100%); padding-left: 24px; padding-bottom: 28px; }
   }
-  .hero .phone { width: min(360px, 78vw); margin: 0 auto; }
 
   /* ---- stat band ---- */
-  .band { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 40px 0; text-align: center; }
-  .band .big { font-size: clamp(20px, 3.4vw, 28px); font-weight: 650; color: var(--ink); line-height: 1.35; }
+  .band { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 40px 0; text-align: center; background: var(--card); }
+  .band .big { font-size: clamp(20px, 3.2vw, 27px); font-weight: 650; color: var(--ink); line-height: 1.35; }
   .band .big em { font-style: normal; color: var(--clay); }
   .band small { display: block; margin-top: 10px; font-size: 13px; color: var(--ink-3); }
 
-  section { padding: 84px 0; }
-  section.tight { padding-top: 56px; }
+  section { padding: 88px 0; }
+  section.tight { padding-top: 48px; }
+
+  /* ---- what it is ---- */
+  .about { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .about .phone { width: 300px; margin: 0 auto; }
+  .points { display: grid; gap: 14px; }
+  .point { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; padding: 22px 24px; display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; }
+  .point .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--clay-soft); color: var(--clay); display: grid; place-items: center; }
+  .point .ic svg { width: 22px; height: 22px; }
+  .point h3 { font-size: 17.5px; }
+  .point p { font-size: 15px; margin-top: 4px; }
+  @media (max-width: 860px) { .about { grid-template-columns: 1fr; gap: 40px; } .about .phone { width: 260px; } }
 
   /* ---- how it works ---- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 44px; }
-  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; gap: 44px; } }
-  .step .phone { width: 100%; margin-bottom: 20px; }
-  @media (max-width: 860px) { .step .phone { width: min(260px, 70vw); margin-inline: auto; } .step { text-align: center; } }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+  .step { text-align: center; }
+  .step .phone { width: min(280px, 100%); margin: 0 auto 22px; }
   .step .n { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--clay); color: var(--on-clay); font-weight: 750; font-size: 14px; margin-bottom: 10px; }
-  .step p { font-size: 15.5px; margin-top: 6px; }
+  .step p { font-size: 15.5px; margin-top: 6px; max-width: 320px; margin-inline: auto; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; gap: 52px; } .step .phone { width: 250px; } }
 
   /* ---- feature rows ---- */
-  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
   .feature.flip .copy { order: 2; }
-  @media (max-width: 860px) { .feature { grid-template-columns: 1fr; gap: 32px; } .feature.flip .copy { order: 0; } }
-  .feature .phone { width: min(340px, 80vw); margin: 0 auto; }
+  .feature .phone { width: 310px; margin: 0 auto; }
+  .feature .photo { width: min(400px, 100%); margin: 0 auto; border-radius: 28px; overflow: hidden; aspect-ratio: 3 / 4; box-shadow: 0 20px 50px -20px rgba(28,27,25,.3); }
+  .feature .photo img { width: 100%; height: 100%; object-fit: cover; }
   .feature ul { list-style: none; margin-top: 22px; display: grid; gap: 12px; }
   .feature li { padding-left: 26px; position: relative; color: var(--ink-2); font-size: 16px; }
   .feature li::before { content: ""; position: absolute; left: 0; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--clay); }
   .feature h2 { margin-top: 6px; }
   .feature .lede { margin-top: 14px; }
+  @media (max-width: 860px) { .feature { grid-template-columns: 1fr; gap: 36px; } .feature.flip .copy { order: 0; } .feature .phone { width: 260px; } }
 
   /* ---- missions ---- */
-  .groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
-  @media (max-width: 760px) { .groups { grid-template-columns: 1fr; } }
-  .group { background: var(--card); border: 1px solid var(--hair); border-radius: 22px; padding: 24px; }
-  .group h3 { margin-bottom: 14px; }
+  .groups { display: grid; gap: 14px; margin-top: 26px; }
+  .group { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; padding: 20px 22px; }
+  .group h3 { margin-bottom: 12px; font-size: 16px; color: var(--ink-2); font-weight: 650; letter-spacing: .02em; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { background: var(--sunk); border-radius: 999px; padding: 8px 14px; font-size: 14.5px; color: var(--ink); font-weight: 500; }
   .custom { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
   .custom b { color: var(--clay); font-weight: 650; }
 
   /* ---- gallery ---- */
-  .gallery { display: flex; gap: 18px; overflow-x: auto; padding: 8px 24px 28px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
-  .gallery img { width: 246px; height: auto; border-radius: 22px; scroll-snap-align: center; box-shadow: 0 10px 30px rgba(0,0,0,.12); flex-shrink: 0; }
+  .gallery { display: flex; gap: 20px; overflow-x: auto; padding: 12px 24px 32px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .gallery img { width: 250px; height: auto; border-radius: 22px; scroll-snap-align: center; box-shadow: 0 14px 34px -10px rgba(28,27,25,.25); border: 1px solid var(--hair); flex-shrink: 0; }
   .gallery-wrap { max-width: 1080px; margin: 0 auto; }
+  .gallery-hint { text-align: center; font-size: 13px; color: var(--ink-3); }
 
   /* ---- pricing ---- */
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; max-width: 760px; }
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; max-width: 720px; margin-inline: auto; }
   @media (max-width: 640px) { .plans { grid-template-columns: 1fr; } }
-  .plan { background: var(--card); border: 1.5px solid var(--hair); border-radius: 22px; padding: 26px; position: relative; }
+  .plan { background: var(--card); border: 1.5px solid var(--hair); border-radius: 22px; padding: 26px; position: relative; text-align: left; }
   .plan.best { border-color: var(--clay); }
   .plan .tag { position: absolute; top: -12px; left: 22px; background: var(--clay); color: var(--on-clay); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
   .plan .name { font-size: 14px; color: var(--ink-2); font-weight: 600; }
@@ -164,7 +175,7 @@
   .plan .per { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
   .plan ul { list-style: none; margin-top: 18px; display: grid; gap: 8px; font-size: 14.5px; color: var(--ink-2); }
   .plan li::before { content: "✓"; color: var(--clay); font-weight: 700; margin-right: 8px; }
-  .pricing-note { margin-top: 22px; font-size: 14.5px; color: var(--ink-2); max-width: 640px; }
+  .pricing-note { margin: 26px auto 0; font-size: 14.5px; color: var(--ink-2); max-width: 640px; text-align: center; }
   .pricing-note b { color: var(--ink); font-weight: 650; }
 
   /* ---- privacy ---- */
@@ -175,7 +186,7 @@
   .privacy li::before { content: "✓"; position: absolute; left: 0; color: var(--clay); font-weight: 700; }
 
   /* ---- faq ---- */
-  .faq { max-width: 720px; margin-top: 28px; }
+  .faq { max-width: 720px; margin: 28px auto 0; }
   details { border-top: 1px solid var(--hair); padding: 18px 0; }
   details:last-of-type { border-bottom: 1px solid var(--hair); }
   summary { cursor: pointer; font-weight: 650; font-size: 17px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
@@ -185,15 +196,15 @@
   details p { margin-top: 10px; font-size: 15.5px; max-width: 620px; }
 
   /* ---- quote ---- */
-  .quote { text-align: center; padding: 48px 24px; }
+  .quote { text-align: center; padding: 56px 24px; background: var(--card); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
   .quote blockquote { font-family: "New York", "Iowan Old Style", Georgia, serif; font-size: clamp(20px, 3vw, 27px); color: var(--ink); max-width: 640px; margin: 0 auto; line-height: 1.4; text-wrap: balance; }
   .quote cite { display: block; margin-top: 14px; font-style: normal; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
 
   /* ---- notify ---- */
-  .notify { background: var(--clay); color: var(--on-clay); border-radius: 28px; padding: 48px 36px; text-align: center; }
+  .notify { background: var(--clay); color: var(--on-clay); border-radius: 28px; padding: 52px 36px; text-align: center; }
   .notify h2, .notify p { color: inherit; }
-  .notify p { opacity: .85; margin-top: 10px; }
-  .notify .pill { background: var(--on-clay); color: var(--clay); margin-top: 24px; }
+  .notify p { opacity: .88; margin-top: 10px; max-width: 520px; margin-inline: auto; }
+  .notify .pill { background: var(--on-clay); color: var(--clay); margin-top: 26px; }
 
   footer { padding: 56px 0 80px; font-size: 13.5px; color: var(--ink-3); }
   footer .row { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; margin-bottom: 14px; }
@@ -217,8 +228,8 @@
       </svg>
       First Light
     </a>
+    <a class="link" href="#about">What it is</a>
     <a class="link" href="#how">How it works</a>
-    <a class="link" href="#missions">Missions</a>
     <a class="link" href="#pricing">Pricing</a>
     <a class="link" href="blog/index.html">Journal</a>
     <a class="link" href="support.html">Support</a>
@@ -231,17 +242,17 @@
     <div>
       <div class="eyebrow">Coming soon to iPhone</div>
       <h1>Wake up and <em>actually stay up.</em></h1>
-      <p class="lede">First Light is an alarm that keeps coming back until you've done one good thing. Push-ups, a walk, ten minutes of meditation, a page of your journal. Then it stops, and the day is yours.</p>
+      <p class="lede">First Light is an alarm that won't stop until you've done one good thing. Twenty push-ups, a walk, ten minutes of quiet, a page of your journal. Then it stops, and the day is yours.</p>
       <div class="ctas">
         <a class="pill" href="#notify">Get one email when it's live</a>
         <a class="pill quiet" href="#how">See how it works</a>
       </div>
-      <p class="terms-line">One week free, then £5.99 a month or £39.99 a year. iPhone with iOS 26.</p>
+      <p class="terms-line">One week free, then £5.99 a month or £39.99 a year. iPhone, iOS 26.</p>
     </div>
-    <picture class="phone">
-      <source srcset="img/today-dark.png" media="(prefers-color-scheme: dark)">
-      <img src="img/today.png" width="603" height="1311" alt="The First Light Today screen: a nine-day streak, tomorrow's 7:00 alarm with push-ups then meditation, and level 24, Riser." fetchpriority="high">
-    </picture>
+    <div class="hero-art">
+      <div class="photo"><img src="img/hero-photo.jpg" width="960" height="1200" alt="A man doing push-ups on a bedroom floor in morning light, bed unmade behind him" fetchpriority="high"></div>
+      <div class="phone"><div class="frame"><img src="img/today.png" width="603" height="1311" alt="The First Light Today screen: a nine-day streak, tomorrow's 7:00 alarm with push-ups then meditation" fetchpriority="high"></div></div>
+    </div>
   </div>
 </header>
 
@@ -252,39 +263,66 @@
   </div>
 </div>
 
-<section id="how">
+<section id="about">
   <div class="wrap">
-    <div class="prose">
-      <div class="eyebrow">How it works</div>
-      <h2>The alarm rings until the mission is done.</h2>
-      <p class="lede">No snooze button. Tapping Stop only quiets it for ninety seconds, and it comes back five more times across the next ten minutes. The only way to end it is to finish what you set.</p>
+    <div class="prose centre">
+      <div class="eyebrow">What it is</div>
+      <h2>An alarm with a job to do.</h2>
+      <p class="lede">Every other alarm has one button, and it's snooze. First Light replaces it with a mission: something small and real that you agree to the night before. Until it's done, the alarm keeps coming back.</p>
     </div>
-    <div class="steps">
-      <div class="step">
-        <div class="phone"><img src="img/setup.png" width="603" height="1311" alt="Setting an alarm: the mission list with Movement, Learning and Spiritual groups" loading="lazy"></div>
-        <span class="n">1</span>
-        <h3>Pick a mission the night before</h3>
-        <p>Set the time, choose what tomorrow will ask of you, and say how long. Thirty seconds of push-ups counts. So does five minutes of quiet.</p>
-      </div>
-      <div class="step">
-        <div class="phone"><img src="img/journal.png" width="603" height="1311" alt="A journaling session in progress, timer at 1:53" loading="lazy"></div>
-        <span class="n">2</span>
-        <h3>Prove you're up</h3>
-        <p>Timed missions start with a photo of the thing you're about to do: your journal, your mat, your quiet spot. Then a timer you can't skip. Movement missions watch you through the camera instead.</p>
-      </div>
-      <div class="step">
-        <div class="phone"><img src="img/completion.png" width="603" height="1311" alt="Morning won: the completion screen with a card to log your reps" loading="lazy"></div>
-        <span class="n">3</span>
-        <h3>Morning won</h3>
-        <p>Log what you managed, next to yesterday's number. Your streak grows, your level climbs, and the alarm re-arms itself for tomorrow.</p>
+    <div class="about">
+      <div class="phone"><div class="frame"><img src="img/today.png" width="603" height="1311" alt="The Today screen showing a streak, tomorrow's alarm and your level" loading="lazy"></div></div>
+      <div class="points">
+        <div class="point">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg></div>
+          <div><h3>No snooze button</h3><p>Stop only quiets it for ninety seconds. It comes back five more times across ten minutes, and it doesn't care how you feel about that.</p></div>
+        </div>
+        <div class="point">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div><h3>One mission, sized by you</h3><p>Push-ups, a walk, meditation, reading, prayer, a page of your journal. Set the length low enough to clear on a bad morning, and raise it when you're ready.</p></div>
+        </div>
+        <div class="point">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div><h3>Proof, not promises</h3><p>Movement is watched by the camera, steps are counted by the phone, and timed missions begin with a photo of the thing you're about to do. Nothing is recorded or sent anywhere.</p></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="tight">
+<section id="how" class="tight">
+  <div class="wrap">
+    <div class="prose centre">
+      <div class="eyebrow">How it works</div>
+      <h2>Three screens, one morning.</h2>
+      <p class="lede">Set it the night before. Prove you're up. Log the win. The alarm re-arms itself for tomorrow.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="phone"><div class="frame"><img src="img/setup.png" width="603" height="1311" alt="Setting an alarm: the mission list with Movement, Learning and Spiritual groups" loading="lazy"></div></div>
+        <span class="n">1</span>
+        <h3>Pick a mission the night before</h3>
+        <p>Set the time, choose what tomorrow will ask of you, and say how long. Thirty seconds of push-ups counts. So does five minutes of quiet.</p>
+      </div>
+      <div class="step">
+        <div class="phone"><div class="frame"><img src="img/journal.png" width="603" height="1311" alt="A journaling session in progress, timer at 1:53" loading="lazy"></div></div>
+        <span class="n">2</span>
+        <h3>Prove you're up</h3>
+        <p>Timed missions start with a photo of the thing you're about to do, then a timer you can't skip. Movement missions watch you through the camera instead.</p>
+      </div>
+      <div class="step">
+        <div class="phone"><div class="frame"><img src="img/completion.png" width="603" height="1311" alt="Morning won: the completion screen with a card to log your reps" loading="lazy"></div></div>
+        <span class="n">3</span>
+        <h3>Morning won</h3>
+        <p>Log what you managed, next to yesterday's number. Your streak grows, your level climbs, and the day is yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="wrap feature">
-    <div class="phone"><img src="img/pushups.png" width="603" height="1311" alt="A push-ups session: the countdown at 24 and a live view from the phone's camera showing someone mid push-up" loading="lazy"></div>
+    <div class="phone"><div class="frame"><img src="img/pushups.png" width="603" height="1311" alt="A push-ups session: the countdown at 24 and a live view from the phone's camera showing someone mid push-up" loading="lazy"></div></div>
     <div class="copy">
       <div class="eyebrow">Verified, not dismissed</div>
       <h2>It can see you move.</h2>
@@ -298,33 +336,35 @@
   </div>
 </section>
 
-<section id="missions">
-  <div class="wrap">
-    <div class="prose">
+<section id="missions" class="tight">
+  <div class="wrap feature flip">
+    <div class="copy">
       <div class="eyebrow">Ten morning missions</div>
       <h2>Small enough to do on a bad morning.</h2>
       <p class="lede">Every mission has a floor you can clear half asleep, and a setting that grows it over time if you want it to.</p>
+      <div class="groups">
+        <div class="group">
+          <h3>Movement</h3>
+          <div class="chips"><span class="chip">Push-ups</span><span class="chip">Squats</span><span class="chip">Handstand practice</span><span class="chip">Yoga</span><span class="chip">Morning steps</span></div>
+        </div>
+        <div class="group">
+          <h3>Learning</h3>
+          <div class="chips"><span class="chip">Journaling</span><span class="chip">Read 10 pages</span></div>
+        </div>
+        <div class="group">
+          <h3>Spiritual</h3>
+          <div class="chips"><span class="chip">Meditation</span><span class="chip">Bible reading</span><span class="chip">Prayer</span></div>
+        </div>
+      </div>
+      <p class="custom">Or <b>build your own</b>: name it, choose timed or movement, set the length.</p>
     </div>
-    <div class="groups">
-      <div class="group">
-        <h3>Movement</h3>
-        <div class="chips"><span class="chip">Push-ups</span><span class="chip">Squats</span><span class="chip">Handstand practice</span><span class="chip">Yoga</span><span class="chip">Morning steps</span></div>
-      </div>
-      <div class="group">
-        <h3>Learning</h3>
-        <div class="chips"><span class="chip">Journaling</span><span class="chip">Read 10 pages</span></div>
-      </div>
-      <div class="group">
-        <h3>Spiritual</h3>
-        <div class="chips"><span class="chip">Meditation</span><span class="chip">Bible reading</span><span class="chip">Prayer</span></div>
-      </div>
-    </div>
-    <p class="custom">Or <b>build your own</b>: name it, choose timed or movement, set the length.</p>
+    <div class="photo"><img src="img/yoga.jpg" width="900" height="1200" alt="A woman in a lunge on a clay-coloured yoga mat beside her bed, arms raised, morning light through the window" loading="lazy"></div>
   </div>
 </section>
 
 <section class="tight">
-  <div class="wrap feature flip">
+  <div class="wrap feature">
+    <div class="phone"><div class="frame"><img src="img/stack.png" width="603" height="1311" alt="After finishing push-ups the app offers meditation next, with Start it and Skip today" loading="lazy"></div></div>
     <div class="copy">
       <div class="eyebrow">Habit stacking</div>
       <h2>Finish one thing, and the next is already waiting.</h2>
@@ -335,13 +375,11 @@
         <li>A stacked mission is always optional. It never brings the alarm back.</li>
       </ul>
     </div>
-    <div class="phone"><img src="img/stack.png" width="603" height="1311" alt="After finishing push-ups the app offers meditation next, with Start it and Skip today" loading="lazy"></div>
   </div>
 </section>
 
 <section class="tight">
-  <div class="wrap feature">
-    <div class="phone"><img src="img/progress.png" width="603" height="1311" alt="Progress: a nine-day streak, sixty-six percent of mornings won, and push-up reps climbing over a month" loading="lazy"></div>
+  <div class="wrap feature flip">
     <div class="copy">
       <div class="eyebrow">Progress</div>
       <h2>Watch it climb.</h2>
@@ -352,6 +390,7 @@
         <li>Ranks land on the habit-science milestones: seven days, thirty, sixty-six.</li>
       </ul>
     </div>
+    <div class="phone"><div class="frame"><img src="img/progress.png" width="603" height="1311" alt="Progress: a nine-day streak, sixty-six percent of mornings won, and push-up reps climbing over a month" loading="lazy"></div></div>
   </div>
 </section>
 
@@ -360,8 +399,8 @@
   <cite>One of the daily lines inside the app</cite>
 </div>
 
-<section class="tight" style="padding-bottom: 40px">
-  <div class="wrap prose">
+<section style="padding-bottom: 40px">
+  <div class="wrap prose centre">
     <div class="eyebrow">As it appears on the App Store</div>
     <h2>Every screen, in order.</h2>
   </div>
@@ -376,12 +415,13 @@
       <img src="img/store-07.jpg" width="645" height="1398" alt="Or start with a walk" loading="lazy">
       <img src="img/store-08.jpg" width="645" height="1398" alt="Every morning, its own alarm" loading="lazy">
     </div>
+    <p class="gallery-hint">Scroll sideways for all eight.</p>
   </div>
 </section>
 
-<section id="pricing">
+<section id="pricing" class="tight">
   <div class="wrap">
-    <div class="prose">
+    <div class="prose centre">
       <div class="eyebrow">Pricing</div>
       <h2>One week free. Then less than a coffee a month.</h2>
       <p class="lede">No free tier, no locked features. Every mission, every alarm, and your full history from the first morning.</p>
@@ -401,7 +441,7 @@
         <ul><li>One week free</li><li>Cancel any time in Settings</li><li>Everything included</li></ul>
       </div>
     </div>
-    <p class="pricing-note"><b>Cards expire. Alarms shouldn't.</b> If a payment ever fails, any alarm you've already set keeps ringing for 48 hours while you sort it out. A billing problem will never be the reason you missed a morning.</p>
+    <p class="pricing-note"><b>Cards expire. Alarms shouldn't.</b> If a payment ever fails, any alarm you've already set keeps ringing for 48 hours while you sort it out.</p>
   </div>
 </section>
 
@@ -425,7 +465,7 @@
 
 <section class="tight">
   <div class="wrap">
-    <div class="prose">
+    <div class="prose centre">
       <div class="eyebrow">Questions</div>
       <h2>The things people ask.</h2>
     </div>
@@ -436,7 +476,7 @@
       </details>
       <details>
         <summary>What if I genuinely can't do the mission one morning?</summary>
-        <p>Movement missions time out to a plain timer if the camera can't see you, and every timed mission has a floor of a couple of minutes. The point is to get you upright and doing something, not to punish you. Set the length to whatever you'll actually do on your worst morning.</p>
+        <p>Movement missions hand over to a plain timer if the camera can't see you, and every timed mission has a floor of a couple of minutes. The point is to get you upright and doing something, not to punish you. Set the length to whatever you'll actually do on your worst morning.</p>
       </details>
       <details>
         <summary>Is it filming me?</summary>
