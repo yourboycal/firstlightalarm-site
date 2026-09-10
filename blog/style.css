@@ -57,3 +57,7 @@ li { margin-bottom: 6px; }
 .faq details p { margin: 10px 0 0; font-size: 16px; }
 .post-list .kicker { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin: 36px 0 14px; }
 .intro { font-size: 17px; color: var(--ink-soft); margin-bottom: 28px; }
+.author { display: flex; gap: 16px; align-items: flex-start; margin-top: 40px; padding: 20px 22px; background: #fff; border-radius: 18px; box-shadow: 0 4px 20px rgba(0,0,0,.05); }
+.author .mono { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 50%; background: var(--coral); color: #fff; display: grid; place-items: center; font-weight: 750; letter-spacing: .04em; font-size: 15px; }
+.author b { display: block; margin-bottom: 4px; }
+.author p { margin: 0; font-size: 15px; color: var(--ink-soft); }

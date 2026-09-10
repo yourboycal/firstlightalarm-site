@@ -44,6 +44,17 @@ def ld(obj):
 ORG = {"@type": "Organization", "@id": ORG_ID, "name": "Calco Studios Ltd", "alternateName": "First Light",
        "url": BASE, "logo": BASE + "img/logo.png", "email": "hello@firstlightalarm.com",
        "address": {"@type": "PostalAddress", "addressCountry": "GB"}}
+AUTHOR_ID = BASE + "#callum"
+AUTHOR = {"@type": "Person", "@id": AUTHOR_ID, "name": "Callum Matthews", "jobTitle": "Founder",
+          "worksFor": {"@id": ORG_ID}, "url": BASE + "blog/index.html",
+          "description": "Founder of Calco Studios Ltd and maker of First Light, an iPhone alarm that won't stop until a morning mission is done."}
+AUTHOR_BIO = """<div class="author">
+    <div class="mono">CM</div>
+    <div>
+      <b>Callum Matthews</b>
+      <p>Founder of Calco Studios and maker of <a href="../index.html">First Light</a>, an iPhone alarm that won't stop until a morning mission is done. He writes The Morning Journal from the research he had to read to build it. <a href="mailto:hello@firstlightalarm.com">Email him</a> if a study is misread; it will be corrected.</p>
+    </div>
+  </div>"""
 WEBSITE = {"@type": "WebSite", "@id": BASE + "#website", "url": BASE, "name": "First Light", "publisher": {"@id": ORG_ID}}
 
 def head(meta, depth, extra_ld):
@@ -145,11 +156,11 @@ def build_post(meta):
     post_ld = {"@type": "BlogPosting", "@id": BASE + meta["path"], "mainEntityOfPage": BASE + meta["path"],
                "headline": meta["h1"], "description": meta["description"], "image": BASE + meta["og"],
                "datePublished": meta["published"], "dateModified": meta.get("modified", TODAY),
-               "author": {"@type": "Organization", "name": "First Light", "url": BASE},
+               "author": {"@id": AUTHOR_ID},
                "publisher": {"@id": ORG_ID}, "isPartOf": {"@type": "Blog", "@id": BASE + "blog/#blog", "name": "The Morning Journal"},
                "wordCount": len(re.sub(r"<[^>]+>", " ", meta["body"]).split()),
                "inLanguage": "en-GB"}
-    graph = [ORG, post_ld, crumbs_ld([("First Light", ""), ("The Morning Journal", "blog/index.html"), (meta["crumb"], meta["path"])])]
+    graph = [ORG, AUTHOR, post_ld, crumbs_ld([("First Light", ""), ("The Morning Journal", "blog/index.html"), (meta["crumb"], meta["path"])])]
     if faqs: graph.append(faq_ld(faqs))
     doc = head(meta, 1, ld({"@context": "https://schema.org", "@graph": graph}))
     when = datetime.date.fromisoformat(meta["published"]).strftime("%-d %B %Y")
@@ -158,7 +169,7 @@ def build_post(meta):
     doc += f'''<div class="wrap">
   <a class="home" href="index.html">&larr; The Morning Journal</a>
   <h1>{meta["h1"]}</h1>
-  <p class="meta">First Light · <time datetime="{meta["published"]}">{when}</time>{upd} · {max(3, round(words / 220))} min read</p>
+  <p class="meta">By <a href="index.html#author">Callum Matthews</a> · <time datetime="{meta["published"]}">{when}</time>{upd} · {max(3, round(words / 220))} min read</p>
 
 {meta["body"]}
 '''
@@ -166,6 +177,7 @@ def build_post(meta):
         doc += f'\n  <h2>Questions people ask</h2>\n{faq_html(faqs)}\n'
     if meta.get("refs"):
         doc += '\n  <div class="refs">\n    <h2>References</h2>\n    <ol>\n' + "\n".join(f"      <li>{r}</li>" for r in meta["refs"]) + "\n    </ol>\n  </div>\n"
+    doc += "\n  " + AUTHOR_BIO + "\n"
     if meta.get("related"):
         doc += "\n" + related_html([(n, p.replace("blog/", "") if p.startswith("blog/") else "../" + p, d) for n, p, d in meta["related"]], 0) + "\n"
     doc += f'''
@@ -185,9 +197,9 @@ def build_blog_index(posts):
       <a href="{m["path"].replace("blog/", "")}">{m["h1"]}</a>
       <p>{m["blurb"]}</p>
     </li>''' for m in posts)
-    graph = [ORG, {"@type": "Blog", "@id": BASE + "blog/#blog", "name": "The Morning Journal", "url": BASE + "blog/index.html",
+    graph = [ORG, AUTHOR, {"@type": "Blog", "@id": BASE + "blog/#blog", "name": "The Morning Journal", "url": BASE + "blog/index.html",
                    "description": "Research-backed writing on habits, snoozing, sleep inertia and morning routines.",
-                   "publisher": {"@id": ORG_ID},
+                   "publisher": {"@id": ORG_ID}, "author": {"@id": AUTHOR_ID},
                    "blogPost": [{"@type": "BlogPosting", "@id": BASE + m["path"], "headline": m["h1"], "datePublished": m["published"], "url": BASE + m["path"]} for m in posts]},
              crumbs_ld([("First Light", ""), ("The Morning Journal", "blog/index.html")])]
     meta = {"path": "blog/index.html", "og": "img/og/journal.png", "kind": "post",
@@ -206,6 +218,10 @@ def build_blog_index(posts):
     <li class="kicker">All posts, newest first</li>
 {items}
   </ul>
+
+  <div id="author">
+  {AUTHOR_BIO.replace("../index.html", "../index.html")}
+  </div>
 </div>
 </body>
 </html>

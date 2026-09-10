@@ -1,15 +1,87 @@
 [
- {"out":"img/og/why-you-cant-stop-hitting-snooze.png","title":"Why you can't stop hitting snooze (and what actually works)","kicker":"The Morning Journal"},
- {"out":"img/og/how-long-does-it-take-to-build-a-habit.png","title":"How long does it really take to build a habit?","kicker":"The Morning Journal"},
- {"out":"img/og/habit-stacking-morning-routine.png","title":"Habit stacking: the simplest way to build a morning routine","kicker":"The Morning Journal"},
- {"out":"img/og/sleep-inertia.png","title":"Sleep inertia: why the first ten minutes of the day feel impossible","kicker":"The Morning Journal"},
- {"out":"img/og/morning-vs-evening-workout.png","title":"Morning vs evening workouts: which one actually sticks?","kicker":"The Morning Journal"},
- {"out":"img/og/does-the-5am-club-work.png","title":"Does the 5am club work? What the science says about early rising","kicker":"The Morning Journal"},
- {"out":"img/og/how-to-wake-up-without-hitting-snooze.png","title":"How to wake up without hitting snooze","kicker":"The Morning Journal"},
- {"out":"img/og/alarm-that-makes-you-exercise.png","title":"The alarm that makes you exercise before it stops","kicker":"First Light for iPhone"},
- {"out":"img/og/alarm-that-makes-you-get-out-of-bed.png","title":"An alarm that makes you get out of bed, and counts the steps","kicker":"First Light for iPhone"},
- {"out":"img/og/no-snooze-alarm-app.png","title":"A no-snooze alarm app for iPhone","kicker":"First Light for iPhone"},
- {"out":"img/og/alarmy-alternative.png","title":"First Light vs Alarmy: an honest comparison","kicker":"First Light for iPhone"},
- {"out":"img/og/features.png","title":"Everything the alarm can ask of you","kicker":"First Light features"},
- {"out":"img/og/journal.png","title":"The Morning Journal: habit science, honestly told","kicker":"First Light"}
+ {
+  "out": "img/og/why-you-cant-stop-hitting-snooze.png",
+  "title": "Why you can't stop hitting snooze (and what actually works)",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/how-long-does-it-take-to-build-a-habit.png",
+  "title": "How long does it really take to build a habit?",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/habit-stacking-morning-routine.png",
+  "title": "Habit stacking: the simplest way to build a morning routine",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/sleep-inertia.png",
+  "title": "Sleep inertia: why the first ten minutes of the day feel impossible",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/morning-vs-evening-workout.png",
+  "title": "Morning vs evening workouts: which one actually sticks?",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/does-the-5am-club-work.png",
+  "title": "Does the 5am club work? What the science says about early rising",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/how-to-wake-up-without-hitting-snooze.png",
+  "title": "How to wake up without hitting snooze",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/alarm-that-makes-you-exercise.png",
+  "title": "The alarm that makes you exercise before it stops",
+  "kicker": "First Light for iPhone"
+ },
+ {
+  "out": "img/og/alarm-that-makes-you-get-out-of-bed.png",
+  "title": "An alarm that makes you get out of bed, and counts the steps",
+  "kicker": "First Light for iPhone"
+ },
+ {
+  "out": "img/og/no-snooze-alarm-app.png",
+  "title": "A no-snooze alarm app for iPhone",
+  "kicker": "First Light for iPhone"
+ },
+ {
+  "out": "img/og/alarmy-alternative.png",
+  "title": "First Light vs Alarmy: an honest comparison",
+  "kicker": "First Light for iPhone"
+ },
+ {
+  "out": "img/og/features.png",
+  "title": "Everything the alarm can ask of you",
+  "kicker": "First Light features"
+ },
+ {
+  "out": "img/og/journal.png",
+  "title": "The Morning Journal: habit science, honestly told",
+  "kicker": "First Light"
+ },
+ {
+  "out": "img/og/how-to-be-more-productive-in-the-morning.png",
+  "title": "How to be more productive in the morning: what the research supports",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/new-year-habits-that-last.png",
+  "title": "New Year habits that last: start in January, still going in March",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/how-to-wake-up-earlier.png",
+  "title": "How to wake up earlier without feeling terrible",
+  "kicker": "The Morning Journal"
+ },
+ {
+  "out": "img/og/how-to-stop-procrastinating-in-the-morning.png",
+  "title": "How to stop procrastinating in the morning",
+  "kicker": "The Morning Journal"
+ }
 ]
