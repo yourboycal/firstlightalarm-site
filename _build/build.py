@@ -158,7 +158,7 @@ def build_post(meta):
                "datePublished": meta["published"], "dateModified": meta.get("modified", TODAY),
                "author": {"@id": AUTHOR_ID},
                "publisher": {"@id": ORG_ID}, "isPartOf": {"@type": "Blog", "@id": BASE + "blog/#blog", "name": "The Morning Journal"},
-               "wordCount": len(re.sub(r"<[^>]+>", " ", meta["body"]).split()),
+               "wordCount": len(re.sub(r"<[^>]+>", " ", meta["body"] + " " + " ".join(q + " " + a for q, a in faqs)).split()),
                "inLanguage": "en-GB"}
     graph = [ORG, AUTHOR, post_ld, crumbs_ld([("First Light", ""), ("The Morning Journal", "blog/index.html"), (meta["crumb"], meta["path"])])]
     if faqs: graph.append(faq_ld(faqs))
