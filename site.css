@@ -202,3 +202,32 @@
   .more:hover { text-decoration: underline; }
   nav a.link[aria-current="page"] { color: var(--ink); font-weight: 650; }
 
+
+  /* ---- long-form product pages ---- */
+  .longform { max-width: 720px; margin: 0 auto; }
+  .longform h2 { font-size: clamp(24px, 3.4vw, 30px); margin: 44px 0 12px; }
+  .longform h3 { margin: 28px 0 8px; }
+  .longform p { margin-bottom: 16px; font-size: 17px; }
+  .longform ul, .longform ol { margin: 0 0 18px 22px; color: var(--ink-2); font-size: 17px; }
+  .longform li { margin-bottom: 8px; }
+  .longform li::marker { color: var(--clay); }
+  .longform strong { color: var(--ink); }
+  .longform figure { margin: 32px auto; text-align: center; }
+  .longform figure .phone { margin: 0 auto; width: 280px; }
+  .longform figcaption { font-size: 14px; color: var(--ink-3); margin-top: 14px; }
+  .longform .callout { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; padding: 22px 26px; margin: 28px 0; }
+  .longform .callout p:last-child { margin-bottom: 0; }
+  .longform table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15.5px; }
+  .longform th, .longform td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--hair); vertical-align: top; color: var(--ink-2); }
+  .longform th { color: var(--ink); font-weight: 650; }
+  .longform td:first-child { color: var(--ink); font-weight: 600; }
+  .table-scroll { overflow-x: auto; }
+  .longform .faq { margin-top: 12px; }
+  .crumbs { font-size: 13.5px; color: var(--ink-3); margin-bottom: 18px; }
+  .crumbs a { color: var(--ink-3); text-decoration: none; }
+  .crumbs a:hover { color: var(--clay); }
+  .related { border-top: 1px solid var(--hair); margin-top: 48px; padding-top: 28px; }
+  .related h2 { font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
+  .related ul { list-style: none; margin: 0; display: grid; gap: 10px; }
+  .related a { font-weight: 650; text-decoration: none; color: var(--ink); }
+  .related a:hover { color: var(--clay); }

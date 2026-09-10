@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://firstlightalarm.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://firstlightalarm.com/features.html</loc><priority>0.9</priority></url>
-  <url><loc>https://firstlightalarm.com/blog/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://firstlightalarm.com/blog/how-long-does-it-take-to-build-a-habit.html</loc><priority>0.7</priority></url>
-  <url><loc>https://firstlightalarm.com/blog/why-you-cant-stop-hitting-snooze.html</loc><priority>0.7</priority></url>
-  <url><loc>https://firstlightalarm.com/blog/habit-stacking-morning-routine.html</loc><priority>0.7</priority></url>
-  <url><loc>https://firstlightalarm.com/privacy.html</loc><priority>0.3</priority></url>
-  <url><loc>https://firstlightalarm.com/terms.html</loc><priority>0.3</priority></url>
-  <url><loc>https://firstlightalarm.com/support.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://firstlightalarm.com/</loc><lastmod>2026-09-10</lastmod><priority>1.0</priority></url>
+  <url><loc>https://firstlightalarm.com/features.html</loc><lastmod>2026-09-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://firstlightalarm.com/alarm-that-makes-you-exercise.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://firstlightalarm.com/alarm-that-makes-you-get-out-of-bed.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://firstlightalarm.com/no-snooze-alarm-app.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://firstlightalarm.com/alarmy-alternative.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/index.html</loc><lastmod>2026-09-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/sleep-inertia.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/morning-vs-evening-workout.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/does-the-5am-club-work.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/how-to-wake-up-without-hitting-snooze.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/why-you-cant-stop-hitting-snooze.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/how-long-does-it-take-to-build-a-habit.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/blog/habit-stacking-morning-routine.html</loc><lastmod>2026-09-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://firstlightalarm.com/support.html</loc><lastmod>2026-09-10</lastmod><priority>0.5</priority></url>
+  <url><loc>https://firstlightalarm.com/privacy.html</loc><lastmod>2026-09-10</lastmod><priority>0.3</priority></url>
+  <url><loc>https://firstlightalarm.com/terms.html</loc><lastmod>2026-09-10</lastmod><priority>0.3</priority></url>
 </urlset>

@@ -41,3 +41,19 @@ a { color: var(--coral); }
   box-shadow: 0 4px 20px rgba(0,0,0,.05);
 }
 .hero-art svg { display: block; width: 100%; height: auto; }
+h3 { font-size: 17px; margin: 24px 0 6px; }
+ul, ol { margin: 0 0 16px 22px; }
+li { margin-bottom: 6px; }
+.related { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,.1); }
+.related h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); margin: 0 0 12px; }
+.related ul { list-style: none; margin: 0; }
+.related li { margin-bottom: 8px; }
+.related a { text-decoration: none; font-weight: 650; color: var(--ink); }
+.related a:hover { color: var(--coral); }
+.faq details { border-top: 1px solid rgba(0,0,0,.1); padding: 14px 0; }
+.faq details:last-of-type { border-bottom: 1px solid rgba(0,0,0,.1); }
+.faq summary { cursor: pointer; font-weight: 650; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq details p { margin: 10px 0 0; font-size: 16px; }
+.post-list .kicker { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin: 36px 0 14px; }
+.intro { font-size: 17px; color: var(--ink-soft); margin-bottom: 28px; }
