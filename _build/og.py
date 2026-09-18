@@ -1,4 +1,4 @@
-"""Generate 1200x630 Open Graph cards and a square logo in the First Light palette."""
+"""Generate 1200x630 Open Graph cards and a square logo in the First Step palette."""
 import json, os, sys
 from PIL import Image, ImageDraw, ImageFont
 SF = "/System/Library/Fonts/SFNS.ttf"
@@ -6,11 +6,15 @@ PAPER, INK, CLAY, SUB = (248, 246, 241), (28, 27, 25), (201, 97, 61), (107, 104,
 def font(size, weight, optical):
     f = ImageFont.truetype(SF, size); f.set_variation_by_axes([100, optical, 400, weight]); return f
 def mark(d, cx, cy, r, ink=INK):
-    # half sun on a horizon line with three rays, same as the favicon
-    d.pieslice([cx - r, cy - r, cx + r, cy + r], 180, 360, fill=CLAY)
-    d.line([cx - r * 1.5, cy, cx + r * 1.5, cy], fill=ink, width=max(3, r // 6))
-    for dx, dy in ((0, -1), (-0.7, -0.7), (0.7, -0.7)):
-        d.line([cx + dx * r * 1.25, cy + dy * r * 1.25, cx + dx * r * 1.6, cy + dy * r * 1.6], fill=CLAY, width=max(3, r // 5))
+    # a sun on the first step, ringing: the First Step mark, box of side 2.4r centred on (cx, cy)
+    k = r / 100.0; ox, oy = cx - 120 * k, cy - 120 * k
+    d.pieslice([ox + 76*k, oy + 74*k, ox + 180*k, oy + 178*k], 180, 360, fill=CLAY)
+    d.rounded_rectangle([ox + 90*k, oy + 134*k, ox + 198*k, oy + 154*k], radius=6*k, fill=CLAY)
+    d.rounded_rectangle([ox + 44*k, oy + 160*k, ox + 124*k, oy + 180*k], radius=6*k, fill=CLAY)
+    R = 52 * 1.34 * k
+    for a0, a1 in ((208, 244), (296, 332)):
+        d.arc([ox + 128*k - R, oy + 126*k - R, ox + 128*k + R, oy + 126*k + R], a0, a1, fill=CLAY, width=max(2, round(9*k)))
+
 def wrap(d, text, f, max_w):
     words, lines, cur = text.split(), [], []
     for w in words:
@@ -20,8 +24,8 @@ def wrap(d, text, f, max_w):
     return lines
 def card(path, title, kicker):
     im = Image.new("RGB", (1200, 630), PAPER); d = ImageDraw.Draw(im)
-    mark(d, 96, 96, 26)
-    d.text((140, 74), "First Light", font=font(30, 700, 28), fill=INK)
+    mark(d, 96, 96, 44)
+    d.text((140, 74), "First Step", font=font(30, 700, 28), fill=INK)
     d.text((80, 168), kicker.upper(), font=font(20, 700, 20), fill=CLAY)
     size = 64
     while True:
@@ -31,12 +35,12 @@ def card(path, title, kicker):
     y = 212
     for ln in lines:
         d.text((80, y), ln, font=f, fill=INK); y += int(size * 1.18)
-    d.text((80, 556), "firstlightalarm.com", font=font(22, 500, 20), fill=SUB)
+    d.text((80, 556), "firststepalarm.com", font=font(22, 500, 20), fill=SUB)
     d.rectangle([0, 622, 1200, 630], fill=CLAY)
     im.save(path, optimize=True)
 def logo(path):
     im = Image.new("RGB", (512, 512), PAPER); d = ImageDraw.Draw(im)
-    mark(d, 256, 300, 120)
+    mark(d, 256, 256, 200)
     im.save(path, optimize=True)
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # repo root

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://firstlightalarm.com/sitemap.xml
+Sitemap: https://firststepalarm.com/sitemap.xml

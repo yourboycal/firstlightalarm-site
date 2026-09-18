@@ -1,4 +1,4 @@
-"""Assemble First Light pages from content fragments.
+"""Assemble First Step pages from content fragments.
 
 Run from anywhere:  python3 _build/build.py
 
@@ -11,7 +11,7 @@ sitemap.xml, and injects structured data into index.html and features.html.
 import json, os, re, glob, html, datetime
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)  # repo root
-BASE = "https://firstlightalarm.com/"
+BASE = "https://firststepalarm.com/"
 TODAY = datetime.date.today().isoformat()
 ORG_ID = BASE + "#org"
 
@@ -41,21 +41,21 @@ def footer_for(depth):
 def ld(obj):
     return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + "\n</script>"
 
-ORG = {"@type": "Organization", "@id": ORG_ID, "name": "Calco Studios Ltd", "alternateName": "First Light",
-       "url": BASE, "logo": BASE + "img/logo.png", "email": "hello@firstlightalarm.com",
+ORG = {"@type": "Organization", "@id": ORG_ID, "name": "Calco Studios Ltd", "alternateName": "First Step",
+       "url": BASE, "logo": BASE + "img/logo.png", "email": "hello@firststepalarm.com",
        "address": {"@type": "PostalAddress", "addressCountry": "GB"}}
 AUTHOR_ID = BASE + "#callum"
 AUTHOR = {"@type": "Person", "@id": AUTHOR_ID, "name": "Callum Matthews", "jobTitle": "Founder",
           "worksFor": {"@id": ORG_ID}, "url": BASE + "blog/index.html",
-          "description": "Founder of Calco Studios Ltd and maker of First Light, an iPhone alarm that won't stop until a morning mission is done."}
+          "description": "Founder of Calco Studios Ltd and maker of First Step, an iPhone alarm that won't stop until a morning mission is done."}
 AUTHOR_BIO = """<div class="author">
     <div class="mono">CM</div>
     <div>
       <b>Callum Matthews</b>
-      <p>Founder of Calco Studios and maker of <a href="../index.html">First Light</a>, an iPhone alarm that won't stop until a morning mission is done. He writes The Morning Journal from the research he had to read to build it. <a href="mailto:hello@firstlightalarm.com">Email him</a> if a study is misread; it will be corrected.</p>
+      <p>Founder of Calco Studios and maker of <a href="../index.html">First Step</a>, an iPhone alarm that won't stop until a morning mission is done. He writes The Morning Journal from the research he had to read to build it. <a href="mailto:hello@firststepalarm.com">Email him</a> if a study is misread; it will be corrected.</p>
     </div>
   </div>"""
-WEBSITE = {"@type": "WebSite", "@id": BASE + "#website", "url": BASE, "name": "First Light", "publisher": {"@id": ORG_ID}}
+WEBSITE = {"@type": "WebSite", "@id": BASE + "#website", "url": BASE, "name": "First Step", "publisher": {"@id": ORG_ID}}
 
 def head(meta, depth, extra_ld):
     rel = "../" if depth else ""
@@ -73,7 +73,7 @@ def head(meta, depth, extra_ld):
 <meta property="og:description" content="{html.escape(meta["description"])}">
 <meta property="og:url" content="{url}">
 <meta property="og:type" content="{"article" if meta["kind"] == "post" else "website"}">
-<meta property="og:site_name" content="First Light">
+<meta property="og:site_name" content="First Step">
 <meta property="og:image" content="{og_img}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -124,16 +124,16 @@ def build_product(meta):
     graph = [ORG, WEBSITE,
              {"@type": "WebPage", "@id": BASE + meta["path"], "url": BASE + meta["path"], "name": meta["h1"],
               "description": meta["description"], "isPartOf": {"@id": BASE + "#website"},
-              "about": {"@type": "SoftwareApplication", "name": "First Light", "operatingSystem": "iOS 26",
+              "about": {"@type": "SoftwareApplication", "name": "First Step", "operatingSystem": "iOS 26",
                         "applicationCategory": "LifestyleApplication"},
               "dateModified": meta.get("modified", TODAY), "datePublished": meta.get("published", TODAY)},
-             crumbs_ld([("First Light", ""), (meta["crumb"], meta["path"])])]
+             crumbs_ld([("First Step", ""), (meta["crumb"], meta["path"])])]
     if faqs: graph.append(faq_ld(faqs))
     doc = head(meta, 0, ld({"@context": "https://schema.org", "@graph": graph}))
     doc += nav_for(0) + "\n\n"
     doc += f'''<header class="page-head">
   <div class="wrap longform">
-    <p class="crumbs"><a href="index.html">First Light</a> &rsaquo; {meta["crumb"]}</p>
+    <p class="crumbs"><a href="index.html">First Step</a> &rsaquo; {meta["crumb"]}</p>
     <div class="eyebrow">{meta["eyebrow"]}</div>
     <h1>{meta["h1"]}</h1>
     <p class="lede">{meta["lede"]}</p>
@@ -160,7 +160,7 @@ def build_post(meta):
                "publisher": {"@id": ORG_ID}, "isPartOf": {"@type": "Blog", "@id": BASE + "blog/#blog", "name": "The Morning Journal"},
                "wordCount": len(re.sub(r"<[^>]+>", " ", meta["body"] + " " + " ".join(q + " " + a for q, a in faqs)).split()),
                "inLanguage": "en-GB"}
-    graph = [ORG, AUTHOR, post_ld, crumbs_ld([("First Light", ""), ("The Morning Journal", "blog/index.html"), (meta["crumb"], meta["path"])])]
+    graph = [ORG, AUTHOR, post_ld, crumbs_ld([("First Step", ""), ("The Morning Journal", "blog/index.html"), (meta["crumb"], meta["path"])])]
     if faqs: graph.append(faq_ld(faqs))
     doc = head(meta, 1, ld({"@context": "https://schema.org", "@graph": graph}))
     when = datetime.date.fromisoformat(meta["published"]).strftime("%-d %B %Y")
@@ -183,7 +183,7 @@ def build_post(meta):
     doc += f'''
   <div class="cta-box">
     <b>{meta["cta_b"]}</b>
-    <span>{meta["cta"]} <a href="../index.html">Meet First Light &rarr;</a></span>
+    <span>{meta["cta"]} <a href="../index.html">Meet First Step &rarr;</a></span>
   </div>
 </div>
 </body>
@@ -201,14 +201,14 @@ def build_blog_index(posts):
                    "description": "Research-backed writing on habits, snoozing, sleep inertia and morning routines.",
                    "publisher": {"@id": ORG_ID}, "author": {"@id": AUTHOR_ID},
                    "blogPost": [{"@type": "BlogPosting", "@id": BASE + m["path"], "headline": m["h1"], "datePublished": m["published"], "url": BASE + m["path"]} for m in posts]},
-             crumbs_ld([("First Light", ""), ("The Morning Journal", "blog/index.html")])]
+             crumbs_ld([("First Step", ""), ("The Morning Journal", "blog/index.html")])]
     meta = {"path": "blog/index.html", "og": "img/og/journal.png", "kind": "post",
-            "title": "The Morning Journal: habit science for better mornings | First Light",
-            "description": "Research-backed writing on habits, snoozing, sleep inertia, exercise timing and morning routines from the team behind First Light, the no-snooze alarm.",
+            "title": "The Morning Journal: habit science for better mornings | First Step",
+            "description": "Research-backed writing on habits, snoozing, sleep inertia, exercise timing and morning routines from the team behind First Step, the no-snooze alarm.",
             "h1": "The Morning Journal", "og_title": "The Morning Journal: habit science for better mornings"}
     doc = head(meta, 1, ld({"@context": "https://schema.org", "@graph": graph})).replace('<meta property="og:type" content="article">', '<meta property="og:type" content="website">')
     doc += f'''<div class="wrap">
-  <a class="home" href="../index.html">&larr; First Light</a>
+  <a class="home" href="../index.html">&larr; First Step</a>
   <h1>The Morning Journal</h1>
   <p class="meta">Habit science, honestly told. No 21-day myths.</p>
   <p class="intro">Most advice about mornings is either a motivational poster or a product pitch. This is neither. Every post here starts from published research on sleep, habit formation and behaviour change, names the study, links to it, and says plainly where the evidence is thin. We write it because we built <a href="../index.html">an alarm</a> around this research and had to read it properly first.</p>
@@ -232,7 +232,7 @@ def inject_home(fragments):
     p = f"{SITE}/index.html"; s = open(p, encoding="utf-8").read()
     faqs = re.findall(r"<summary>(.*?)</summary>\s*<p>(.*?)</p>", s, re.S)
     faqs = [(html.unescape(re.sub(r"<[^>]+>", "", q)), html.unescape(re.sub(r"<[^>]+>", "", a)).strip()) for q, a in faqs]
-    app = {"@type": "SoftwareApplication", "@id": BASE + "#app", "name": "First Light", "operatingSystem": "iOS 26",
+    app = {"@type": "SoftwareApplication", "@id": BASE + "#app", "name": "First Step", "operatingSystem": "iOS 26",
            "applicationCategory": "LifestyleApplication", "applicationSubCategory": "Alarm clock",
            "description": "An iPhone alarm that keeps coming back until you have finished a morning mission: push-ups, squats, a walk, meditation, journaling, reading or prayer. Movement is verified by the camera on the phone; nothing is recorded or uploaded.",
            "url": BASE, "image": BASE + "img/og.png", "screenshot": [BASE + f"img/store-0{i}.jpg" for i in range(1, 9)],
@@ -249,8 +249,8 @@ def inject_home(fragments):
 def inject_features():
     p = f"{SITE}/features.html"; s = open(p, encoding="utf-8").read()
     graph = [ORG, WEBSITE, {"@type": "WebPage", "@id": BASE + "features.html", "url": BASE + "features.html",
-             "name": "First Light features", "isPartOf": {"@id": BASE + "#website"}, "about": {"@id": BASE + "#app"}},
-             crumbs_ld([("First Light", ""), ("Features", "features.html")])]
+             "name": "First Step features", "isPartOf": {"@id": BASE + "#website"}, "about": {"@id": BASE + "#app"}},
+             crumbs_ld([("First Step", ""), ("Features", "features.html")])]
     block = ld({"@context": "https://schema.org", "@graph": graph})
     s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', "", s, flags=re.S)
     s = s.replace('<link rel="stylesheet" href="site.css">', '<link rel="stylesheet" href="site.css">\n' + block)
