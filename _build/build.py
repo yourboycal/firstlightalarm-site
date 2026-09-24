@@ -19,7 +19,7 @@ src_index = open(f"{SITE}/index.html", encoding="utf-8").read()
 NAV = re.search(r"<nav>.*?</nav>", src_index, re.S).group(0)
 FOOTER = re.search(r"<footer.*?</footer>", src_index, re.S).group(0)
 FAVICON = re.search(r'<link rel="icon"[^>]*>', src_index).group(0)
-NOTIFY = re.search(r'<section id="notify".*?</section>', src_index, re.S).group(0)
+DOWNLOAD = re.search(r'<section id="get".*?</section>', src_index, re.S).group(0)
 
 def nav_for(depth, current=None):
     n = NAV
@@ -148,7 +148,7 @@ def build_product(meta):
         doc += f'\n    <h2>Questions people ask</h2>\n{faq_html(faqs)}\n'
     if meta.get("related"):
         doc += "\n" + related_html(meta["related"], 0) + "\n"
-    doc += "  </div>\n</section>\n\n" + NOTIFY + "\n\n" + footer_for(0) + "\n\n</body>\n</html>\n"
+    doc += "  </div>\n</section>\n\n" + DOWNLOAD + "\n\n" + footer_for(0) + "\n\n</body>\n</html>\n"
     open(f"{SITE}/{meta['path']}", "w", encoding="utf-8").write(doc)
 
 def build_post(meta):
@@ -183,7 +183,7 @@ def build_post(meta):
     doc += f'''
   <div class="cta-box">
     <b>{meta["cta_b"]}</b>
-    <span>{meta["cta"]} <a href="../index.html">Meet First Step &rarr;</a></span>
+    <span>{meta["cta"]} <a href="https://apps.apple.com/gb/app/first-step-no-snooze-alarm/id6789765925">Get First Step on the App Store &rarr;</a></span>
   </div>
 </div>
 </body>
@@ -235,11 +235,11 @@ def inject_home(fragments):
     app = {"@type": "SoftwareApplication", "@id": BASE + "#app", "name": "First Step", "operatingSystem": "iOS 26",
            "applicationCategory": "LifestyleApplication", "applicationSubCategory": "Alarm clock",
            "description": "An iPhone alarm that keeps coming back until you have finished a morning mission: push-ups, squats, a walk, meditation, journaling, reading or prayer. Movement is verified by the camera on the phone; nothing is recorded or uploaded.",
-           "url": BASE, "image": BASE + "img/og.png", "screenshot": [BASE + f"img/store-0{i}.jpg" for i in range(1, 9)],
+           "url": BASE, "installUrl": "https://apps.apple.com/gb/app/first-step-no-snooze-alarm/id6789765925", "downloadUrl": "https://apps.apple.com/gb/app/first-step-no-snooze-alarm/id6789765925", "image": BASE + "img/og.png", "screenshot": [BASE + f"img/store-0{i}.jpg" for i in range(1, 9)],
            "featureList": "No snooze; mission-based dismissal; camera-verified push-ups and squats; pedometer-counted morning steps; timed missions with photo proof; habit stacking; streaks, levels and progress charts; multiple alarms; rings through Silent mode and Focus; everything stored on the phone",
            "offers": [{"@type": "Offer", "name": "Yearly", "price": "39.99", "priceCurrency": "GBP", "category": "subscription", "description": "One week free, then £39.99 a year"},
                       {"@type": "Offer", "name": "Monthly", "price": "5.99", "priceCurrency": "GBP", "category": "subscription", "description": "One week free, then £5.99 a month"}],
-           "publisher": {"@id": ORG_ID}, "author": {"@id": ORG_ID}, "isAccessibleForFree": False, "countryOfOrigin": "GB"}
+           "publisher": {"@id": ORG_ID}, "author": {"@id": ORG_ID}, "isAccessibleForFree": False, "countryOfOrigin": "GB", "datePublished": "2026-09-22"}
     graph = [ORG, WEBSITE, app, faq_ld(faqs)]
     block = ld({"@context": "https://schema.org", "@graph": graph})
     s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', "", s, flags=re.S)
