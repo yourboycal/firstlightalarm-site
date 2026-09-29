@@ -211,13 +211,15 @@ def build_blog_index(posts):
   <a class="home" href="../index.html">&larr; First Step</a>
   <h1>The Morning Journal</h1>
   <p class="meta">Habit science, honestly told. No 21-day myths.</p>
-  <p class="intro">Most advice about mornings is either a motivational poster or a product pitch. This is neither. Every post here starts from published research on sleep, habit formation and behaviour change, names the study, links to it, and says plainly where the evidence is thin. We write it because we built <a href="../index.html">an alarm</a> around this research and had to read it properly first.</p>
+  <p class="intro">Most advice about mornings is either a motivational poster or a product pitch. This is neither. Every post here starts from published research on sleep, habit formation and behaviour change, names the study, links to it, and says plainly where the evidence is thin. We write it because we built <a href="https://apps.apple.com/gb/app/first-step-no-snooze-alarm/id6789765925">an alarm</a> around this research and had to read it properly first.</p>
   <p class="intro">Start with <a href="why-you-cant-stop-hitting-snooze.html">why you can't stop hitting snooze</a> if you want the problem, or <a href="how-to-wake-up-without-hitting-snooze.html">how to wake up without hitting snooze</a> if you want the fix.</p>
 
   <ul class="post-list">
     <li class="kicker">All posts, newest first</li>
 {items}
   </ul>
+
+  <p class="intro" style="margin-top:40px">First Step is out now on the App Store. <a href="https://apps.apple.com/gb/app/first-step-no-snooze-alarm/id6789765925">Get it for iPhone</a>.</p>
 
   <div id="author">
   {AUTHOR_BIO.replace("../index.html", "../index.html")}
