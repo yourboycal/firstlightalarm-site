@@ -12,12 +12,20 @@
     --on-clay: #FFFFFF;
   }
 
+  /* Headlines are set in New York, the serif the app uses for its daily
+     line. Bold centred sans is what every other productivity app looks
+     like; the serif is the fastest way to stop looking generated. */
+  :root { --serif: "New York", "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; color-scheme: light; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--paper); color: var(--ink);
+    background:
+      radial-gradient(1100px 760px at 86% -6%, #FBE9DF 0%, rgba(251,233,223,0) 62%),
+      linear-gradient(176deg, #FDFBF7 0%, var(--paper) 46%, #F1ECE3 100%);
+    background-attachment: fixed; color: var(--ink);
     -webkit-font-smoothing: antialiased; line-height: 1.55; overflow-x: hidden;
   }
   img { max-width: 100%; height: auto; display: block; }
@@ -27,9 +35,13 @@
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .prose { max-width: 640px; }
   .centre { text-align: center; margin-inline: auto; }
-  h1, h2, h3 { letter-spacing: -.02em; line-height: 1.08; text-wrap: balance; }
-  h2 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 750; }
+  h1, h2 { font-family: var(--serif); font-weight: 500; letter-spacing: -.022em;
+           line-height: 1.06; text-wrap: balance; }
+  h3 { letter-spacing: -.02em; line-height: 1.12; text-wrap: balance; }
+  h2 { font-size: clamp(31px, 4.6vw, 45px); }
   h3 { font-size: 19px; font-weight: 700; }
+  /* The accent lands on one phrase per headline, never two. */
+  h1 em, h2 em { font-style: normal; color: var(--clay); }
   p { color: var(--ink-2); }
   .lede { font-size: clamp(17px, 2.1vw, 19.5px); }
   .eyebrow {
@@ -72,15 +84,13 @@
     background: radial-gradient(closest-side, rgba(201, 97, 61, .16), transparent 70%); pointer-events: none;
   }
   .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; position: relative; }
-  h1 { font-size: clamp(42px, 6.6vw, 72px); font-weight: 780; letter-spacing: -.03em; line-height: 1.0; }
+  h1 { font-size: clamp(42px, 6.6vw, 72px); font-weight: 500; letter-spacing: -.028em; line-height: 1.03; }
   h1 em { font-style: normal; color: var(--clay); }
   .hero .lede { margin-top: 22px; max-width: 500px; }
   .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
   .terms-line { margin-top: 18px; font-size: 13.5px; color: var(--ink-3); }
-  .hero-art { position: relative; width: min(440px, 100%); margin-left: auto; padding: 0 0 36px 44px; }
-  .hero-art .photo { border-radius: 30px; overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 20px 50px -20px rgba(28,27,25,.3); }
-  .hero-art .photo img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-art .phone { position: absolute; left: 0; bottom: 0; width: 44%; }
+  .hero-art { position: relative; width: min(360px, 100%); margin-left: auto; }
+  .hero-art .phone { width: 100%; }
   @media (max-width: 860px) {
     .hero { padding-top: 44px; }
     .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
